@@ -1,0 +1,28 @@
+{
+  "name": "data_randomizer",
+  "version": "1.0.0",
+  "description": "Generates random data values for name,number,email,password and color",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"no tests specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udhavvinaik/G5_WEB_DEV.git#main"
+  },
+  "keywords": [
+    "random",
+    "data",
+    "generator",
+    "fake",
+    "mock",
+    "testing",
+    "utility"
+  ],
+  "author": "Udhav Vinaik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/udhavvinaik/G5_WEB_DEV/issues"
+  },
+  "homepage": "https://github.com/udhavvinaik/G5_WEB_DEV/tree/main#readme"
+}

@@ -1,6 +1,6 @@
 {
-  "name": "data_randomizer",
-  "version": "1.0.0",
+  "name": "data-randomizer-lite",
+  "version": "1.0.1",
   "description": "Generates random data values for name,number,email,password and color",
   "main": "index.js",
   "scripts": {

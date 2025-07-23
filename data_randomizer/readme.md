@@ -7,6 +7,6 @@ A lightweight random data generator for names, emails, passwords, colors, and nu
 ## Installation
 
 ```bash
-npm install data_randimizer
+npm install data-randomizer-lite
 
 

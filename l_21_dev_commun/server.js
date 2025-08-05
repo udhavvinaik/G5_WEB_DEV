@@ -1,39 +1,45 @@
-// ALL MODULES
+//REQUIRE OR IMPORT ALL THE MODULES HERE ONLY
 const express = require("express");
 require("dotenv").config();
-// MONGOOSE MODULE
 const mongoose = require("mongoose");
-const userRoute = require("./routes/userRoute");
+const userRouter = require("./routes/userRoutes");
 
-
-//INSTANCES
+//SET INSTANCES HERE ONLY
 const app = express();
 
 
-// APPLICATION END POINTS
-app.use("/api/user", userRoute);
+
+//VARIABLE DECLARATION HERE ONLY
+const PORT = process.env.PORT || 4888;
 
 
-// VARIABLESz
-const PORT = process.env.PORT || 4500;
-const DATABASE_URL = process.env.DATABASE_URL;
-const DATABASE_NAME = process.env.DATABASE_NAME;
+// I WANT TO RUN A MIDDLEWARE
+app.use(express.json());
+
+app.use(function(req,res,next){
+  console.log("THIS IS GLOBAL APP MIDDLWARE");
+  next()
+})
+
+//WE WILLL MAKE ROUTES
+
+//END POINTS : USER
+
+app.get("/",(req,res)=>{
+  res.send({message:"THIS IS DASHBOARD"})
+})
+
+app.use("/api/user",userRouter)
 
 
-// ROUTES TO HANDLE
+async function dbConnect() {
+  await mongoose.connect(process.env.CONNECTION_URI).then(() => {
+    console.log("DB CONNECTED");
+  });
+}
 
-
-
-// SERVER LOGIC
-const serverStarted = async () => {
-  try {
-    await mongoose.connect(DATABASE_URL).then(() => console.log(`Database Connected SuccessfullyS! : ${DATABASE_NAME}`));
-    app.listen(PORT, () => {
-      console.log(`Your Server Running on ${PORT}`);
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-serverStarted();
+dbConnect().then(() => {
+  app.listen(PORT, () => {
+    console.log("Server running on port: ", PORT);
+  });
+});

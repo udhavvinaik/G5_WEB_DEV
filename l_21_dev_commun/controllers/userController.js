@@ -56,7 +56,14 @@ const loginUser = async (req,res) => {
      if(!userExists){
         return res.status(400).send("User not found !!")
      }
-     res.status(200).json({userExists});
+     if(userExists.password !== password){
+        return res.status(400).send("Invalid Password !!")
+     }
+     res.status(200).json({
+        message: "User Logged In",
+        username:userExists.firstName,
+        email:userExists.emailId,
+     } );
 }
 
 module.exports = { registerUser, loginUser }
